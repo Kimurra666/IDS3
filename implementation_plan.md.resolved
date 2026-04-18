@@ -1,0 +1,56 @@
+# E-LO Frontend Implementation Plan
+
+This plan outlines how we will connect the UI HTML pages downloaded from the Stitch project to create a functional prototype. The prototype will implement a mocked authentication flow and a navigation structure as requested.
+
+## User Review Required
+
+> [!IMPORTANT]
+> Since this is a prototype, we will use mock authentication. Any credentials entered will be accepted. We will use the browser's `localStorage` to keep the user logged in across page reloads. Please confirm if this approach is suitable.
+
+> [!NOTE]
+> We will hardcode the user's name as "Sanskriti Tandan" in the dashboard, along with the specified mock stats and leaderboard values.
+
+## Proposed Changes
+
+### Global Navigation & Authentication Logic
+
+We will modify each HTML file to inject vanilla JavaScript that handles form submissions and checks the authentication state.
+
+#### [MODIFY] [create_account.html](file:///C:/Users/Sk%20Saha/OneDrive/Desktop/IDS%201/create_account.html)
+- **Check Login State**: On page load, check if the user is already logged in (`localStorage.getItem('isLoggedIn') === 'true'`). If so, automatically redirect to `desktop_dashboard.html`.
+- **Form Submission**: Intercept the "Send OTP" form submission. Prevent the default form action, and instead redirect the user to `verify_otp.html`.
+- **Login Link**: Modify the "Log in here" link at the bottom to redirect to `desktop_dashboard.html` setting the login state to true (acting as a mock direct login).
+
+#### [MODIFY] [verify_otp.html](file:///C:/Users/Sk%20Saha/OneDrive/Desktop/IDS%201/verify_otp.html)
+- **Check Login State**: On page load, redirect to dashboard if already logged in.
+- **OTP Verification**: Intercept the "Verify & Continue" form/button click. 
+- **Mock Success Logic**: Set `localStorage.setItem('isLoggedIn', 'true')` to simulate a successful login, and redirect the user smoothly to `desktop_dashboard.html`.
+
+#### [MODIFY] [desktop_dashboard.html](file:///C:/Users/Sk%20Saha/OneDrive/Desktop/IDS%201/desktop_dashboard.html)
+- **Check Login State**: On page load, check if the user is logged in. If NOT logged in (`!localStorage.getItem('isLoggedIn')`), force redirect back to `create_account.html`.
+- **UI Content Updates**: Ensure the requested UI elements are correctly set:
+  - **Top Left Area**: Ensure Sidebar/Nav contains options for "Home", "History" (items given to box with date/time), and "Support".
+  - **Top Centre/Profile**: Update the user profile name to "Sanskriti Tandan". Ensure "My Perks" and "Society Bin" sections are visible.
+  - **Stats Section**: Ensure mock stats are displayed for "Members", "Total Weight", and "Total Items".
+  - **Society Leaderboard**: Verify that the leaderboard correctly shows members and their points.
+- **Logout Action**: Add a logout event (e.g. clicking on the profile) to clear `localStorage` and return to `create_account.html`.
+- **Admin Link**: Add a link or button in the dashboard to navigate to the `admin_panel.html`.
+
+#### [MODIFY] [admin_panel.html](file:///C:/Users/Sk%20Saha/OneDrive/Desktop/IDS%201/admin_panel.html)
+- **Navigation**: Add a "Back to Dashboard" button to return to `desktop_dashboard.html`.
+
+## Open Questions
+
+1. Do you want any specific interactive elements added to the Dashboard (like a "Donate Item" modal or graph toggles) for the prototype, beyond the static layout updates?
+2. Where exactly in the dashboard would you like the link to the `admin_panel.html` placed?
+
+## Verification Plan
+
+### Manual Verification
+1. Open `create_account.html` in the browser. Confirm it does not redirect.
+2. Fill up the form with any mock credentials and click "Send OTP". Verify navigation to `verify_otp.html`.
+3. Input any OTP and click verify. Verify it redirects to `desktop_dashboard.html`.
+4. Refresh `desktop_dashboard.html` to confirm it persists the login state.
+5. Close tab, open `create_account.html` directly in a new tab. Verify it automatically redirects to `desktop_dashboard.html`.
+6. Click logout on the dashboard and verify it returns to `create_account.html`.
+7. Click the admin panel link to navigate there, and then click back.

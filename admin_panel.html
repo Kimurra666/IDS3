@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>E-LO Admin - Waste Log Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#ffb3b0",
+                        "on-tertiary-fixed-variant": "#5d4200",
+                        "secondary": "#6b5a5a",
+                        "on-background": "#1a1c1a",
+                        "tertiary": "#443000",
+                        "tertiary-fixed-dim": "#fdbc13",
+                        "primary": "#6d0413",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#251819",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#574140",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2f312f",
+                        "surface-tint": "#a93539",
+                        "tertiary-container": "#614500",
+                        "secondary-container": "#f1dada",
+                        "background": "#faf9f6",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e3e2e0",
+                        "primary-fixed": "#ffdad8",
+                        "on-secondary-container": "#705e5e",
+                        "outline-variant": "#debfbe",
+                        "surface-container": "#efeeeb",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#ffa09e",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#1a1c1a",
+                        "secondary-fixed": "#f4dddd",
+                        "inverse-on-surface": "#f2f1ee",
+                        "outline": "#8b7170",
+                        "secondary-fixed-dim": "#d7c1c1",
+                        "on-tertiary-container": "#edaf00",
+                        "on-primary-fixed-variant": "#881c24",
+                        "on-secondary-fixed-variant": "#534343",
+                        "surface-dim": "#dbdad7",
+                        "surface-bright": "#faf9f6",
+                        "surface": "#faf9f6",
+                        "surface-container-highest": "#e3e2e0",
+                        "surface-container-low": "#f4f3f1",
+                        "on-primary-fixed": "#410007",
+                        "inverse-primary": "#ffb3b0",
+                        "tertiary-fixed": "#ffdea3",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#261900",
+                        "surface-container-high": "#e9e8e5",
+                        "primary-container": "#8d2027",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; background-color: #faf9f6; }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-card { background: rgba(141, 32, 39, 0.95); backdrop-filter: blur(20px); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="text-on-surface overflow-x-hidden">
+<!-- SideNavBar (The Anchor) -->
+<nav class="fixed left-0 top-0 h-full w-64 z-50 bg-[#6d0413] shadow-xl shadow-[#1a1c1a]/10 flex flex-col py-8">
+<div class="px-6 mb-8">
+<h1 class="font-['Plus_Jakarta_Sans'] font-black text-white text-2xl">E-LO Admin</h1>
+<p class="text-[#debfbe] text-xs font-medium uppercase tracking-wider mt-1">Central Management</p>
+</div>
+<div class="flex-1 space-y-1">
+<a class="text-[#debfbe] hover:text-white px-6 py-3 flex items-center gap-3 hover:bg-[#8d2027]/50 transition-all duration-300 translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<a class="bg-[#8d2027] text-white rounded-r-full mr-4 px-6 py-3 flex items-center gap-3 translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-medium text-sm">Waste Logs</span>
+</a>
+<a class="text-[#debfbe] hover:text-white px-6 py-3 flex items-center gap-3 hover:bg-[#8d2027]/50 transition-all duration-300 translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-medium text-sm">Statistics</span>
+</a>
+<a class="text-[#debfbe] hover:text-white px-6 py-3 flex items-center gap-3 hover:bg-[#8d2027]/50 transition-all duration-300 translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-medium text-sm">Residents</span>
+</a>
+<a class="text-[#debfbe] hover:text-white px-6 py-3 flex items-center gap-3 hover:bg-[#8d2027]/50 transition-all duration-300 translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium text-sm">Settings</span>
+</a>
+</div>
+<div class="px-4 mt-auto">
+<button class="w-full bg-[#faf9f6] text-[#6d0413] font-bold py-3 rounded-xl shadow-lg flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform active:scale-95">
+<span class="material-symbols-outlined">add_circle</span>
+                New Waste Drop
+            </button>
+<div class="mt-6 pt-6 border-t border-[#8d2027]">
+<a class="text-[#debfbe] hover:text-white px-4 py-2 flex items-center gap-3 text-sm" href="desktop_dashboard.html">
+<span class="material-symbols-outlined">arrow_back</span>
+                    Back to Dashboard
+                </a>
+<a class="text-[#debfbe] hover:text-white px-4 py-2 flex items-center gap-3 text-sm" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+                    Support
+                </a>
+<a class="text-[#debfbe] hover:text-white px-4 py-2 flex items-center gap-3 text-sm" href="#">
+<span class="material-symbols-outlined">logout</span>
+                    Logout
+                </a>
+</div>
+</div>
+</nav>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 w-full z-40 bg-[#faf9f6] shadow-sm opacity-4 flex justify-between items-center h-16 px-6 ml-64 pl-72">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 w-64 focus:ring-2 focus:ring-primary text-sm" placeholder="Search residents or logs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-outline hover:bg-secondary-container rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-outline hover:bg-secondary-container rounded-full transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-sm font-bold text-on-surface">Admin User</p>
+<p class="text-xs text-on-surface-variant">Super Admin</p>
+</div>
+<img alt="Admin profile avatar" class="w-10 h-10 rounded-full border-2 border-primary-fixed" data-alt="close-up portrait of a professional male administrator in a light-filled office setting, clean lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbnhPSr560WSwr9rBR7_DaYleaz5JrT2h0S2po681Jo6mru_-HbaInvSM-e6xTcACW0g89K2CyRP0cpwtU857eA11VIConXBANiNmq843sIRAH22styYvVSSFu1aH2EE60gvLPyXx673nn8K8uZshzH-jjbJ06m_7BbUpFXa1BUzohF9T67pZSgY6D3fABYgSWoJvRtD3mm26Q7xK0a8H8g4jBnMdsNbxO0Ca26QvuEritc1KmsH1-NG_xzAmnvhRDKz9bwAOvF_8"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 pb-12 px-8 min-h-screen">
+<div class="max-w-7xl mx-auto grid grid-cols-12 gap-8">
+<!-- Left Column: Form & Bin Status -->
+<div class="col-span-12 lg:col-span-8 space-y-8">
+<!-- Log New E-Waste Section -->
+<section class="bg-surface-container-lowest rounded-xl p-8 shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline text-2xl font-bold text-primary tracking-tight">Log new e-waste drop</h2>
+<span class="text-xs font-bold bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full uppercase tracking-tighter">New Entry</span>
+</div>
+<form class="space-y-8">
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold text-outline uppercase tracking-widest ml-1">Resident Name</label>
+<select class="w-full bg-surface-container-low border-none rounded-xl py-4 px-4 focus:ring-2 focus:ring-primary text-on-surface font-medium">
+<option>Select Resident</option>
+<option>Arjun Mehta</option>
+<option>Sanya Iyer</option>
+<option>Vikram Seth</option>
+<option>Priya Sharma</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-outline uppercase tracking-widest ml-1">Room / Flat no.</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 px-4 focus:ring-2 focus:ring-primary text-on-surface font-medium placeholder:text-outline/50" placeholder="e.g. A-402" type="text"/>
+</div>
+</div>
+<div class="space-y-4">
+<label class="text-xs font-bold text-outline uppercase tracking-widest ml-1">E-waste Category</label>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Category Card -->
+<label class="cursor-pointer group">
+<input class="hidden peer" name="category" type="radio"/>
+<div class="p-4 rounded-xl bg-surface-container-low border-2 border-transparent peer-checked:border-primary peer-checked:bg-primary-fixed transition-all flex flex-col items-center text-center gap-3">
+<div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">smartphone</span>
+</div>
+<p class="text-xs font-bold">Mobile/Tablet</p>
+</div>
+</label>
+<!-- Category Card -->
+<label class="cursor-pointer group">
+<input class="hidden peer" name="category" type="radio"/>
+<div class="p-4 rounded-xl bg-surface-container-low border-2 border-transparent peer-checked:border-primary peer-checked:bg-primary-fixed transition-all flex flex-col items-center text-center gap-3">
+<div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">laptop_mac</span>
+</div>
+<p class="text-xs font-bold">Laptops/PC</p>
+</div>
+</label>
+<!-- Category Card -->
+<label class="cursor-pointer group">
+<input class="hidden peer" name="category" type="radio"/>
+<div class="p-4 rounded-xl bg-surface-container-low border-2 border-transparent peer-checked:border-primary peer-checked:bg-primary-fixed transition-all flex flex-col items-center text-center gap-3">
+<div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">kitchen</span>
+</div>
+<p class="text-xs font-bold">Large App.</p>
+</div>
+</label>
+<!-- Category Card -->
+<label class="cursor-pointer group">
+<input class="hidden peer" name="category" type="radio"/>
+<div class="p-4 rounded-xl bg-surface-container-low border-2 border-transparent peer-checked:border-primary peer-checked:bg-primary-fixed transition-all flex flex-col items-center text-center gap-3">
+<div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">headphones</span>
+</div>
+<p class="text-xs font-bold">Small Elect.</p>
+</div>
+</label>
+</div>
+</div>
+<div class="flex justify-end pt-4">
+<button class="bg-primary text-white font-bold px-10 py-4 rounded-full shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform flex items-center gap-3" type="submit">
+<span class="material-symbols-outlined">save</span>
+                                Log Transaction
+                            </button>
+</div>
+</form>
+</section>
+<!-- Society Bin Status -->
+<section class="bg-primary rounded-xl p-8 shadow-xl text-white relative overflow-hidden">
+<!-- Decorative background element -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-primary-container rounded-full opacity-20 blur-3xl"></div>
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+<div>
+<h3 class="font-headline text-xl font-bold mb-2">Society Bin Status</h3>
+<p class="text-[#debfbe] text-sm mb-6">Real-time capacity tracking for Central Wing Hub</p>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between text-xs font-bold uppercase tracking-widest mb-2">
+<span>Current Weight</span>
+<span>450kg / 600kg</span>
+</div>
+<div class="w-full bg-primary-container/50 h-3 rounded-full overflow-hidden">
+<div class="bg-tertiary-fixed-dim h-full w-[75%] rounded-full shadow-[0_0_10px_rgba(253,188,19,0.5)]"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-[#8d2027] p-4 rounded-xl border border-white/10">
+<p class="text-[10px] text-[#debfbe] uppercase font-bold">Capacity</p>
+<p class="text-xl font-headline font-black">75% Full</p>
+</div>
+<div class="bg-[#8d2027] p-4 rounded-xl border border-white/10">
+<p class="text-[10px] text-[#debfbe] uppercase font-bold">Last Pickup</p>
+<p class="text-xl font-headline font-black">3 Days ago</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center">
+<!-- Eco-Bin Graphic -->
+<div class="relative w-48 h-56">
+<div class="absolute inset-0 bg-[#f1f0ec]/10 border-4 border-white/20 rounded-2xl backdrop-blur-md overflow-hidden">
+<div class="absolute bottom-0 left-0 w-full bg-tertiary-container/80 transition-all duration-1000" style="height: 75%;">
+<div class="absolute top-0 left-0 w-full h-2 bg-white/20"></div>
+</div>
+</div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none">
+<span class="material-symbols-outlined text-5xl mb-2">recycling</span>
+<p class="text-xs font-black uppercase">Active</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Recent Entries -->
+<div class="col-span-12 lg:col-span-4">
+<section class="bg-surface-container-low rounded-xl p-6 h-full flex flex-col">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline text-lg font-bold text-on-surface">Recent entries</h3>
+<a class="text-xs font-bold text-outline hover:text-primary transition-colors uppercase tracking-widest" href="#">See All</a>
+</div>
+<div class="flex-1 space-y-4 no-scrollbar overflow-y-auto">
+<!-- Entry Item -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center gap-4 group hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center text-primary font-bold">
+                                AM
+                            </div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-on-surface truncate">Arjun Mehta</p>
+<p class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">laptop</span>
+                                    Laptop (Old HP)
+                                </p>
+</div>
+<div class="text-right">
+<p class="text-sm font-black text-primary">+450</p>
+<p class="text-[10px] text-outline font-bold uppercase">Points</p>
+</div>
+</div>
+<!-- Entry Item -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center gap-4 group hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center text-primary font-bold">
+                                SI
+                            </div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-on-surface truncate">Sanya Iyer</p>
+<p class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">headphones</span>
+                                    Mixed Peripherals
+                                </p>
+</div>
+<div class="text-right">
+<p class="text-sm font-black text-primary">+120</p>
+<p class="text-[10px] text-outline font-bold uppercase">Points</p>
+</div>
+</div>
+<!-- Entry Item -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center gap-4 group hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center text-primary font-bold">
+                                VS
+                            </div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-on-surface truncate">Vikram Seth</p>
+<p class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">smartphone</span>
+                                    2x iPhone 11
+                                </p>
+</div>
+<div class="text-right">
+<p class="text-sm font-black text-primary">+800</p>
+<p class="text-[10px] text-outline font-bold uppercase">Points</p>
+</div>
+</div>
+<!-- Entry Item -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center gap-4 group hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center text-primary font-bold">
+                                PS
+                            </div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-on-surface truncate">Priya Sharma</p>
+<p class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">kitchen</span>
+                                    Microwave Oven
+                                </p>
+</div>
+<div class="text-right">
+<p class="text-sm font-black text-primary">+1500</p>
+<p class="text-[10px] text-outline font-bold uppercase">Points</p>
+</div>
+</div>
+<!-- Entry Item -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex items-center gap-4 group hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center text-primary font-bold">
+                                RD
+                            </div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-on-surface truncate">Rahul Deshmukh</p>
+<p class="text-xs text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">monitor</span>
+                                    24" LED Monitor
+                                </p>
+</div>
+<div class="text-right">
+<p class="text-sm font-black text-primary">+650</p>
+<p class="text-[10px] text-outline font-bold uppercase">Points</p>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant text-center">
+<div class="inline-flex flex-col items-center">
+<p class="text-xs font-bold text-outline uppercase tracking-widest mb-1">Impact Today</p>
+<p class="text-3xl font-headline font-black text-primary tracking-tighter">24.5 kg</p>
+<p class="text-[10px] text-on-surface-variant font-medium">Recycled across 12 drops</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- FAB Suppression Rule Active: No FAB on Admin Details page -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Auth guard
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+            window.location.href = 'create_account.html';
+            return;
+        }
+
+        // Wire logout link
+        var logoutLinks = document.querySelectorAll('a');
+        logoutLinks.forEach(function(link) {
+            if (link.textContent.trim() === 'Logout') {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('userName');
+                    window.location.href = 'create_account.html';
+                });
+            }
+        });
+    });
+</script>
+</body></html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>E-LO | Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#f4dddd",
+                        "outline": "#8b7170",
+                        "primary-fixed-dim": "#ffb3b0",
+                        "on-surface": "#1a1c1a",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#705e5e",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#8d2027",
+                        "secondary": "#6b5a5a",
+                        "tertiary-container": "#614500",
+                        "inverse-surface": "#2f312f",
+                        "surface-variant": "#e3e2e0",
+                        "inverse-primary": "#ffb3b0",
+                        "on-primary-container": "#ffa09e",
+                        "on-surface-variant": "#574140",
+                        "on-tertiary-fixed": "#261900",
+                        "surface-container": "#efeeeb",
+                        "inverse-on-surface": "#f2f1ee",
+                        "surface-container-highest": "#e3e2e0",
+                        "on-tertiary-container": "#edaf00",
+                        "secondary-fixed-dim": "#d7c1c1",
+                        "outline-variant": "#debfbe",
+                        "background": "#faf9f6",
+                        "surface-dim": "#dbdad7",
+                        "on-primary-fixed-variant": "#881c24",
+                        "on-tertiary-fixed-variant": "#5d4200",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "surface": "#faf9f6",
+                        "tertiary-fixed": "#ffdea3",
+                        "surface-container-high": "#e9e8e5",
+                        "tertiary": "#443000",
+                        "surface-tint": "#a93539",
+                        "primary-fixed": "#ffdad8",
+                        "surface-container-low": "#f4f3f1",
+                        "tertiary-fixed-dim": "#fdbc13",
+                        "surface-bright": "#faf9f6",
+                        "on-secondary-fixed": "#251819",
+                        "on-secondary-fixed-variant": "#534343",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#1a1c1a",
+                        "primary": "#6d0413",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#410007",
+                        "secondary-container": "#f1dada"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, .headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(141, 32, 39, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Sidebar Navigation (SideNavBar) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col py-8 z-40 bg-[#6d0413] dark:bg-[#3d020b] w-64">
+<div class="px-8 mb-10">
+<h1 class="text-xl font-bold text-white tracking-tighter">E-LO</h1>
+<p class="text-[10px] text-white/50 uppercase tracking-widest mt-1">Conscious Archive v1.0</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="bg-white/10 text-white font-semibold rounded-lg mx-2 px-4 py-3 flex items-center gap-3" href="#" id="nav-home">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-sm">Home</span>
+</a>
+<a class="text-white/70 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/5 transition-all duration-200 cursor-pointer" id="nav-history">
+<span class="material-symbols-outlined">history</span>
+<span class="text-sm">History</span>
+</a>
+<a class="text-white/70 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/5 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="text-sm">Support</span>
+</a>
+</nav>
+<div class="px-4 mb-4">
+<a class="text-white/50 hover:text-white mx-2 px-4 py-2 flex items-center gap-3 hover:bg-white/5 transition-all duration-200 text-xs" href="admin_panel.html">
+<span class="material-symbols-outlined text-sm">admin_panel_settings</span>
+<span>Admin Panel</span>
+</a>
+</div>
+<div class="px-4 mt-auto">
+<button class="w-full py-4 bg-white text-[#6d0413] font-bold rounded-full flex items-center justify-center gap-2 shadow-xl hover:scale-95 transition-transform duration-300">
+<span class="material-symbols-outlined">add_circle</span>
+                Log Waste
+            </button>
+<button class="w-full mt-3 py-3 bg-white/10 text-white/70 hover:text-white hover:bg-white/20 font-semibold rounded-full flex items-center justify-center gap-2 transition-all duration-200 text-sm" id="logout-btn">
+<span class="material-symbols-outlined text-sm">logout</span>
+                Logout
+            </button>
+</div>
+</aside>
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-8 py-4 max-w-[1920px] mx-auto sticky top-0 bg-[#faf9f6] z-30">
+<div class="flex items-center gap-8">
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-[#6d0413] dark:text-[#f1dada] font-bold border-b-2 border-[#6d0413] pb-1" href="#">Dashboard</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium hover:text-[#6d0413] transition-colors duration-300" href="#">Impact</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium hover:text-[#6d0413] transition-colors duration-300" href="#">Rewards</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium hover:text-[#6d0413] transition-colors duration-300" href="#">Community</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-stone-100 rounded-full transition-colors duration-300 cursor-pointer">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-stone-100 rounded-full transition-colors duration-300 cursor-pointer">settings</span>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant ring-2 ring-primary-fixed">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Close-up portrait of a professional woman with a warm smile, soft natural lighting, high-end editorial photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7GJMeN1kREyxMP4oFricOcW7H7kyKV3NK_9N_qol3DPXOSgMK146gfxgOvgdcEVKJhoEx9MWJQtIb6s_rYHiNQIgHrH1rLhFWC5tyHLc2ICgaMYbnf569cRHNEHZk2FPQ7uuoQ8G8PoARl84Fuo17FFUCxB_nFcQjPhQQApiJe4DxbaSOxMpcOAAdhz5j3XWY4h1ED9RQ_aTIuvH48fwHKcW_fxZ-qDPqM-Db8z1xm10Fq7v3xtsVcV6bWC79ZHWpGHu_v02HF3E"/>
+</div>
+</div>
+</header>
+<!-- Top Section (Maroon Background) -->
+<section class="bg-primary pt-8 pb-16 px-12 relative overflow-hidden">
+<!-- Decorative Grain/Texture (Pseudo-element substitute) -->
+<div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-container to-transparent"></div>
+<div class="max-w-[1400px] mx-auto grid grid-cols-12 gap-8 relative z-10">
+<!-- Left: Profile Info -->
+<div class="col-span-12 lg:col-span-3 flex flex-col justify-center gap-4">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-primary-fixed/30 shadow-2xl">
+<img alt="Sanskriti Tandan avatar" class="w-full h-full object-cover" data-alt="Sophisticated headshot of a woman, warm indoor lighting, blurred interior background, professional and friendly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRR7lDOMXGt9xpHR58SMh5QNBQAOBgog-DqCX6hyvWqRlQeEOn5oTF2Xhy2FRG03z842cf8BPv4W0GeM8ChRH37Agqmv27ep-I3F6d7cQqHhZybYlgHVuu9lXEr4t06h9Z25LyIVX08uAymKyhB_uoSJPLGbiBG2FXMs4AVFpWrzynRHxJA8lwZnBtCH-iWJRgoUgOlXOKxU4nEM-r53mV2I9uTxmWY5oCotbYVLS-w2yzdzpTOo2zv8Mji4hf6c-T5_sRtqlXgWI"/>
+</div>
+<div>
+<h2 class="text-white text-3xl font-extrabold headline tracking-tight">Sanskriti Tandan</h2>
+<p class="text-primary-fixed/80 flex items-center gap-1 text-sm mt-1">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                            Skyline Apartments, Flat 402, Mumbai
+                        </p>
+</div>
+</div>
+<!-- Center: My Perks Card -->
+<div class="col-span-12 lg:col-span-5">
+<div class="glass-card rounded-xl p-8 border border-white/10 shadow-2xl h-full flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-primary-fixed/60 font-bold uppercase tracking-widest text-[10px]">Your Wallet</p>
+<h3 class="text-white text-xl font-bold mt-1 uppercase">MY PERKS</h3>
+</div>
+<div class="bg-white/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-white">redeem</span>
+</div>
+</div>
+<div class="mt-8 flex items-end gap-2">
+<span class="text-white text-6xl font-black headline tracking-tighter">₹420</span>
+<span class="text-primary-fixed text-sm font-semibold mb-2">REDEEMABLE VALUE</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-8 border-t border-white/10 pt-6">
+<div>
+<p class="text-primary-fixed/60 text-xs font-medium">Items Dropped</p>
+<p class="text-white text-2xl font-bold">12</p>
+</div>
+<div>
+<p class="text-primary-fixed/60 text-xs font-medium">Society Rank</p>
+<p class="text-white text-2xl font-bold">#3</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Society Bin -->
+<div class="col-span-12 lg:col-span-4">
+<div class="bg-white/5 rounded-xl p-8 border border-white/5 h-full flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-white font-bold text-sm tracking-widest uppercase">SOCIETY BIN</h3>
+<span class="text-primary-fixed text-xs bg-white/10 px-2 py-1 rounded">Sector 12 Branch</span>
+</div>
+<div class="flex-1 flex items-center justify-center relative">
+<!-- Visual Waste Bin Graphic -->
+<div class="w-32 h-44 border-4 border-primary-fixed/20 rounded-b-3xl rounded-t-lg relative overflow-hidden bg-primary-container/20">
+<!-- Liquid/Waste level -->
+<div class="absolute bottom-0 left-0 w-full bg-tertiary-container h-[60%] flex items-center justify-center transition-all duration-1000">
+<span class="text-tertiary-fixed font-black text-2xl">60%</span>
+</div>
+<div class="absolute inset-0 bg-[linear-gradient(90deg,transparent_50%,rgba(255,255,255,0.05)_50%)] bg-[length:8px_100%]"></div>
+</div>
+<div class="ml-8">
+<div class="text-white text-4xl font-extrabold headline">31.4 <span class="text-lg font-normal text-primary-fixed/60">kg</span></div>
+<p class="text-primary-fixed/60 text-xs mt-1">/ 50 kg Threshold</p>
+<div class="mt-4 w-32 h-2 bg-white/10 rounded-full overflow-hidden">
+<div class="bg-tertiary-fixed-dim h-full w-[60%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Section (Off-white Background) -->
+<section class="px-12 -mt-8 pb-20 relative z-20">
+<div class="max-w-[1400px] mx-auto">
+<!-- Stats Bar -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="bg-white p-6 rounded-xl shadow-xl flex items-center gap-4 border border-outline-variant/10">
+<div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-tighter">Members</p>
+<p class="text-on-surface text-2xl font-black headline">32</p>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-xl flex items-center gap-4 border border-outline-variant/10">
+<div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">eco</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-tighter">Total Recycled</p>
+<p class="text-on-surface text-2xl font-black headline">187 kg</p>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl shadow-xl flex items-center gap-4 border border-outline-variant/10">
+<div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-tighter">Total Items</p>
+<p class="text-on-surface text-2xl font-black headline">180</p>
+</div>
+</div>
+</div>
+<!-- Leaderboard Section -->
+<div class="bg-white rounded-xl shadow-xl overflow-hidden border border-outline-variant/5">
+<div class="px-8 py-6 border-b border-surface-variant flex justify-between items-center">
+<div>
+<h2 class="text-2xl font-extrabold headline text-primary">Society Leaderboard</h2>
+<p class="text-on-surface-variant text-sm">Recognizing top stewards for June 2024</p>
+</div>
+<button class="text-sm font-bold text-primary hover:bg-primary/5 px-4 py-2 rounded-lg transition-colors">See All Statistics</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low text-on-surface-variant text-xs uppercase tracking-widest font-bold">
+<tr>
+<th class="px-8 py-4">Rank</th>
+<th class="px-8 py-4">Member</th>
+<th class="px-8 py-4">Flat No.</th>
+<th class="px-8 py-4">Total Points</th>
+<th class="px-8 py-4 text-right">Value Generated</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-5">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-sm">1</div>
+</td>
+<td class="px-8 py-5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-fixed">
+<img alt="Rohit Kumar" class="w-full h-full object-cover" data-alt="Portrait of a smiling man in a business casual outfit, outdoor setting with soft sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvDq4xcx8wBkCsG8s9srqGAnPY9a1xFa6A1GaO8RKXXWwAPBeZ9Qe4lfnn06Ubv0OCP0vUVAfAn5CCqdxuX-l8g-u0-AGFeLV8KMz_RbtBDG4otYCh8p6czkFGPEDv0UxfZ144Ga6NKCUnfnfigMyOfqn_gRXBJCxpUeFnHq_BSliNWIjbLDTMCvGCZh08r8GICG8-A3MP0YQLaeeDZzoHZq850uGIJbJdg8l_L4n2P2hiwEwE9nhOUIZXeTfXcUEpFdcbxKcvs5s"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Rohit Kumar</p>
+<p class="text-xs text-on-surface-variant">Joined Feb 2024</p>
+</div>
+</td>
+<td class="px-8 py-5 text-on-surface-variant font-medium">B-102</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 bg-secondary-container text-primary rounded-full text-xs font-bold">1,240 pts</span>
+</td>
+<td class="px-8 py-5 text-right font-black text-on-surface">₹620</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-5">
+<div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold text-sm">2</div>
+</td>
+<td class="px-8 py-5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-secondary-container">
+<img alt="Priya Mehta" class="w-full h-full object-cover" data-alt="Close up of a young professional woman with glasses, minimalist white background, soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsWDRhVYGRJCD-did6yPx-3-El_c28DaOi4v8-OgbEyrJeIKqimxT5ERRjOvCkkNVQOTDgwOA0sRUpFgs32YRF9Dr98eIQy_xdapYayLEsRt4ElOKTPa_ryzBoZum6vCAGNbkAzKanCoC4Q0VvOjl4pUspWgjIuFEjcq3EiCxyGDbK9zGv8L-pMOPqP58H0N1Mz4j6LscPZAauDXa_A0sH3uif1atUEUlDeg3v0ouq6dyhE2wC9nZwnXMPtCoXklwNj2KjzYwCeCo"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Priya Mehta</p>
+<p class="text-xs text-on-surface-variant">Joined Jan 2024</p>
+</div>
+</td>
+<td class="px-8 py-5 text-on-surface-variant font-medium">A-501</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 bg-secondary-container text-primary rounded-full text-xs font-bold">980 pts</span>
+</td>
+<td class="px-8 py-5 text-right font-black text-on-surface">₹490</td>
+</tr>
+<!-- User's Current Position Highlighted -->
+<tr class="bg-primary-fixed/20 border-l-4 border-primary">
+<td class="px-8 py-5">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">3</div>
+</td>
+<td class="px-8 py-5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-container">
+<img alt="Sanskriti Tandan" class="w-full h-full object-cover" data-alt="User profile avatar, woman with dark hair, professional headshot, high quality" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8kz7wXjqjXAsWzUd_OLi0dyucx5BsRSnVyMmryhzmHZGNiwPqxU7mDNqF9f82rI7bSP3LgDTUbTKEuzhW_KfyPQEkeRcExCFDvBuuJWN-wqn1_2MCh0yceLc5aAFQTX5oCuczyu05u3MskiK2dOeC2IekDZHb7Buy03vHE5hWVeSuFITJY1LAvkyr1QC0wtOkOVodGpVNrOkZm9JheOj2B2eUXcfRy_xjS8yzE6pmgwp5Y1AjTm2lKW9GEzVwrnYcbt5E2jwiyC0"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Sanskriti Tandan <span class="ml-2 text-[10px] bg-primary text-white px-1.5 py-0.5 rounded-sm">YOU</span></p>
+<p class="text-xs text-on-surface-variant">Active Member</p>
+</div>
+</td>
+<td class="px-8 py-5 text-on-surface-variant font-medium">B-402</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 bg-primary text-white rounded-full text-xs font-bold">840 pts</span>
+</td>
+<td class="px-8 py-5 text-right font-black text-on-surface">₹420</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-5">
+<div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold text-sm">4</div>
+</td>
+<td class="px-8 py-5 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant flex items-center justify-center text-on-surface-variant font-bold">AM</div>
+<div>
+<p class="font-bold text-on-surface">Anish Malhotra</p>
+<p class="text-xs text-on-surface-variant">Joined Mar 2024</p>
+</div>
+</td>
+<td class="px-8 py-5 text-on-surface-variant font-medium">C-204</td>
+<td class="px-8 py-5">
+<span class="px-3 py-1 bg-secondary-container text-primary rounded-full text-xs font-bold">710 pts</span>
+</td>
+<td class="px-8 py-5 text-right font-black text-on-surface">₹355</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- History Side Panel -->
+<div class="fixed inset-0 z-50 hidden" id="history-overlay">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" id="history-backdrop"></div>
+    <div class="absolute right-0 top-0 h-full w-full max-w-md bg-[#faf9f6] shadow-2xl flex flex-col transition-transform duration-300">
+        <div class="bg-[#6d0413] px-6 py-5 flex items-center justify-between">
+            <div>
+                <h2 class="text-white font-bold text-lg">My History</h2>
+                <p class="text-white/60 text-xs">Items submitted to the bin</p>
+            </div>
+            <button class="text-white/70 hover:text-white" id="history-close">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <div class="flex-1 overflow-y-auto p-6 space-y-4">
+            <!-- History Item -->
+            <div class="bg-white rounded-xl p-4 flex items-center gap-4 shadow-sm">
+                <div class="w-12 h-12 bg-[#f1dada] rounded-lg flex items-center justify-center text-[#6d0413]">
+                    <span class="material-symbols-outlined">smartphone</span>
+                </div>
+                <div class="flex-1">
+                    <p class="font-bold text-[#1a1c1a]">iPhone 10 (Old)</p>
+                    <p class="text-xs text-[#574140]">Mobile Device</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs font-bold text-[#8b7170]">Apr 10, 2024</p>
+                    <p class="text-xs text-[#8b7170]">10:32 AM</p>
+                </div>
+            </div>
+            <!-- History Item -->
+            <div class="bg-white rounded-xl p-4 flex items-center gap-4 shadow-sm">
+                <div class="w-12 h-12 bg-[#f1dada] rounded-lg flex items-center justify-center text-[#6d0413]">
+                    <span class="material-symbols-outlined">headphones</span>
+                </div>
+                <div class="flex-1">
+                    <p class="font-bold text-[#1a1c1a]">Sony WH-1000XM3</p>
+                    <p class="text-xs text-[#574140]">Audio Peripheral</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs font-bold text-[#8b7170]">Mar 28, 2024</p>
+                    <p class="text-xs text-[#8b7170]">2:15 PM</p>
+                </div>
+            </div>
+            <!-- History Item -->
+            <div class="bg-white rounded-xl p-4 flex items-center gap-4 shadow-sm">
+                <div class="w-12 h-12 bg-[#f1dada] rounded-lg flex items-center justify-center text-[#6d0413]">
+                    <span class="material-symbols-outlined">laptop_mac</span>
+                </div>
+                <div class="flex-1">
+                    <p class="font-bold text-[#1a1c1a]">Dell Inspiron Charger</p>
+                    <p class="text-xs text-[#574140]">Laptop Accessory</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs font-bold text-[#8b7170]">Mar 15, 2024</p>
+                    <p class="text-xs text-[#8b7170]">4:45 PM</p>
+                </div>
+            </div>
+            <!-- History Item -->
+            <div class="bg-white rounded-xl p-4 flex items-center gap-4 shadow-sm">
+                <div class="w-12 h-12 bg-[#f1dada] rounded-lg flex items-center justify-center text-[#6d0413]">
+                    <span class="material-symbols-outlined">monitor</span>
+                </div>
+                <div class="flex-1">
+                    <p class="font-bold text-[#1a1c1a]">Samsung 21" Monitor</p>
+                    <p class="text-xs text-[#574140]">Display Unit</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs font-bold text-[#8b7170]">Feb 22, 2024</p>
+                    <p class="text-xs text-[#8b7170]">11:00 AM</p>
+                </div>
+            </div>
+            <!-- History Item -->
+            <div class="bg-white rounded-xl p-4 flex items-center gap-4 shadow-sm">
+                <div class="w-12 h-12 bg-[#f1dada] rounded-lg flex items-center justify-center text-[#6d0413]">
+                    <span class="material-symbols-outlined">cable</span>
+                </div>
+                <div class="flex-1">
+                    <p class="font-bold text-[#1a1c1a]">Mixed USB/HDMI Cables</p>
+                    <p class="text-xs text-[#574140]">Wiring / Cables</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs font-bold text-[#8b7170]">Feb 10, 2024</p>
+                    <p class="text-xs text-[#8b7170]">3:20 PM</p>
+                </div>
+            </div>
+        </div>
+        <div class="px-6 py-4 border-t border-[#debfbe]/30 bg-[#f4f3f1]">
+            <p class="text-xs text-[#574140] text-center">Showing 5 of 12 total submissions</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Auth guard
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+            window.location.href = 'create_account.html';
+            return;
+        }
+
+        // History panel toggle
+        var historyOverlay = document.getElementById('history-overlay');
+        document.getElementById('nav-history').addEventListener('click', function () {
+            historyOverlay.classList.remove('hidden');
+        });
+        document.getElementById('history-close').addEventListener('click', function () {
+            historyOverlay.classList.add('hidden');
+        });
+        document.getElementById('history-backdrop').addEventListener('click', function () {
+            historyOverlay.classList.add('hidden');
+        });
+
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', function () {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userName');
+            window.location.href = 'create_account.html';
+        });
+
+        // Profile avatar logout (top right)
+        var profileAvatar = document.querySelector('.w-10.h-10.rounded-full.overflow-hidden.bg-surface-variant');
+        if (profileAvatar) {
+            profileAvatar.style.cursor = 'pointer';
+            profileAvatar.title = 'Click to logout';
+            profileAvatar.addEventListener('click', function () {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userName');
+                window.location.href = 'create_account.html';
+            });
+        }
+    });
+</script>
+</body></html>
